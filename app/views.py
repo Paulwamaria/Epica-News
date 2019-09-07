@@ -12,10 +12,17 @@ def index():
     title = "Welcome to Epica News Highlights"
     message = 'Welcome to Epica News'
 
-    # Getting popular movie
-    news_highlights = get_news('entertainment')
-    print(news_highlights)
+    # Getting news categories
+    entertainment_highlights = get_news('entertainment')
+    business_news = get_news('business')
+    tech_news = get_news('Technology')
+    sports_news = get_news('sports')
+    health_news = get_news('health')
+    life_style =get_news('lifestyle')
+    breaking_news = get_news('breaking')
+
+    # print(news_highlights)
    
 
 
-    return render_template('index.html',text=message, title = title, entertainment = news_highlights)
+    return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,business = business_news,technology =tech_news,sports = sports_news,health = health_news,lifestyle = life_style,breaking=breaking_news.)
