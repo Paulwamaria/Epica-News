@@ -1,3 +1,4 @@
+{% import 'macros.html' as macro %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,57 +19,43 @@
     <!-- News highlight section  -->
     <h3> News Highlights</h3>
     <ul>
-        {% for highlight in entertainment %}
-        <li>{{ highlight.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(entertainment)}}
     </ul>
 
     <!-- business news section -->
     <h3> Business News</h3>
     <ul>
-        {% for business1 in business %}
-        <li>{{ business1.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(business)}}
     </ul>
 
     <!-- Technolgy section -->
     <h3> Technology News</h3>
     <ul>
-        {% for tech in technology %}
-        <li>{{ tech.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(technology)}}
     </ul>
 
     <!-- sports section -->
     <h3> Sports Highlights</h3>
     <ul>
-        {% for sport in sports %}
-        <li>{{ sport.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(sports)}}
     </ul>
     
     <!-- health section -->
     <h3> Health</h3>
     <ul>
-        {% for health in health %}
-        <li>{{ health.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(health)}}
     </ul>
 
     <!-- lifestyle section -->
     <h3> lifestyle</h3>
     <ul>
-        {% for life in lifestyle %}
-        <li>{{ life.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(lifestyle)}}
     </ul>
 
     <!-- breaking news section -->
     <h3> Breaking News</h3>
     <ul>
-        {% for break in breaking %}
-        <li>{{ break.title}}</li>
-        {% endfor %}
+        {{macro.displayNewsList(breaking)}}
     </ul>
 
 </body>
