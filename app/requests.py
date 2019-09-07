@@ -28,3 +28,29 @@ def get_news(category):
 
 
     return news_results
+
+
+def process_results(news_list):
+    '''
+    Function  that processes the news result and transform them to a list of Objects
+
+    Args:
+        news_list: A list of dictionaries that contain news details
+
+    Returns :
+        news_results: A list of articles objects
+    '''
+    news_results = []
+    for news_article in news_list:
+        source = news_article.get('source.name')
+        title = news_article.get('title')
+        description = news_article.get('description')
+        url = news_article.get('url')
+        urlToImage = news_item.get('urlToImage')
+        publishedAt = news_article.get('publishedAt')
+
+        if urlToImage:
+            news_object = News(source,title,description,url,urlToImage,publishedAt)
+            news_results.append(news_object)
+
+    return news_results
