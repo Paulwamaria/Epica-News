@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,18 @@
     <title> Welcome to Epica News Highlights </title>
     {% endif %}
 </head>
+
 <body>
     <h1>{{ text }} </h1>
+
+    <!-- News highlight section  -->
+    <h3> News Highlights</h3>
+    <ul>
+        {% for highlight in entertainment %}
+        <li>{{ highlight.title}}</li>
+        {% endfor %}
+    </ul>
+
 </body>
+
 </html>
