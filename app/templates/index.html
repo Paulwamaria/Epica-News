@@ -23,6 +23,54 @@
         {% endfor %}
     </ul>
 
+    <!-- business news section -->
+    <h3> Business News</h3>
+    <ul>
+        {% for business1 in business %}
+        <li>{{ business1.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Technolgy section -->
+    <h3> Technology News</h3>
+    <ul>
+        {% for tech in technology %}
+        <li>{{ tech.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- sports section -->
+    <h3> Sports Highlights</h3>
+    <ul>
+        {% for sport in sports %}
+        <li>{{ sport.title}}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- health section -->
+    <h3> Health</h3>
+    <ul>
+        {% for health in health %}
+        <li>{{ health.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- lifestyle section -->
+    <h3> lifestyle</h3>
+    <ul>
+        {% for life in lifestyle %}
+        <li>{{ life.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- breaking news section -->
+    <h3> Breaking News</h3>
+    <ul>
+        {% for break in breaking %}
+        <li>{{ break.title}}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 
 </html>

@@ -15,7 +15,7 @@ def index():
     # Getting news categories
     entertainment_highlights = get_news('entertainment')
     business_news = get_news('business')
-    tech_news = get_news('Technology')
+    tech_news = get_news('technology')
     sports_news = get_news('sports')
     health_news = get_news('health')
     life_style =get_news('lifestyle')
@@ -25,4 +25,6 @@ def index():
    
 
 
-    return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,business = business_news,technology =tech_news,sports = sports_news,health = health_news,lifestyle = life_style,breaking=breaking_news.)
+    return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,
+    business = business_news,technology =tech_news,sports = sports_news,health = health_news,
+    lifestyle = life_style,breaking=breaking_news)
