@@ -8,7 +8,7 @@ Epica News is a web application that allows people to keep up with the current a
 
 Paul Kamau Wamaria
 
-## Technology
+
 
 ## User stories
 
@@ -16,6 +16,8 @@ Paul Kamau Wamaria
 1.  I would also want to select a news source and see all news articles from the selected news source in the application.
 1.  I would want to see the image, description and the time a news article was created.
 1. I would want to click on an article and read the full article on the source website.
+
+## Technology
 
 * python3.6
 * Flask
