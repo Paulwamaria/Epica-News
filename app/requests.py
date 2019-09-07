@@ -1,5 +1,5 @@
 from app import app
-import urllib.requests,json
+import urllib.request,json
 from .models import news
 
 News = news.News
@@ -10,11 +10,11 @@ api_key = app.config['NEWS_API_KEY']
 # Getting the news base url
 base_url = app.config["ARTICLES_API_BASE_URL"]
 
-def get_news(category):
+def get_news(everything):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(category,api_key)
+    get_news_url = base_url.format(everything,api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -22,8 +22,8 @@ def get_news(category):
 
         news_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
+        if get_news_response['articles']:
+            news_results_list = get_news_response['articles']
             news_results = process_results(news_results_list)
 
 
@@ -46,7 +46,7 @@ def process_results(news_list):
         title = news_article.get('title')
         description = news_article.get('description')
         url = news_article.get('url')
-        urlToImage = news_item.get('urlToImage')
+        urlToImage = news_article.get('urlToImage')
         publishedAt = news_article.get('publishedAt')
 
         if urlToImage:
