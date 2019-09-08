@@ -1,49 +1,116 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 
-{% block content %}
-<h1>{{ text }} </h1>
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- News highlight section  -->
-<h3> Entertainment</h3>
-<ul>
-    {{macro.displayNewsList(entertainment)}}
-</ul>
-
-<!-- business news section -->
-<h3> Business News</h3>
-<ul>
-    {{macro.displayNewsList(business)}}
-</ul>
-
-<!-- Technolgy section -->
-<h3> Technology News</h3>
-<ul>
-    {{macro.displayNewsList(technology)}}
-</ul>
-
-<!-- sports section -->
-<h3> Sports Highlights</h3>
-<ul>
-    {{macro.displayNewsList(sports)}}
-</ul>
-
-<!-- health section -->
-<h3> Health</h3>
-<ul>
-    {{macro.displayNewsList(health)}}
-</ul>
-
-<!-- lifestyle section -->
-<h3> lifestyle</h3>
-<ul>
-    {{macro.displayNewsList(lifestyle)}}
-</ul>
-
-<!-- breaking news section -->
-<h3> Breaking News</h3>
-<ul>
-    {{macro.displayNewsList(breaking)}}
-</ul>
-
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
+<!-- Content block -->
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <h1 class="text-center text-white bg-dark">{{ text }} </h1>
+
+    <!-- News highlight section  -->
+    <div class=card>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center text-white bg-dark"> Entertainment</h3>
+
+                <ul>
+                    {{macro.displaynewsList(entertainment)}}
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+ 
+    <!-- business news section -->
+    <div class=card>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center text-white bg-dark"> Business News</h3>
+
+                <div>
+                    <ul>
+                        {{macro.displaynewsList(business)}}
+                    </ul>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Technolgy section -->
+        <div class=card>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center text-white bg-dark"> Technology News</h3>
+                    <ul>
+                        {{macro.displaynewsList(technology)}}
+                    </ul>
+            
+                    <!-- sp
+                </div>
+            </div>
+        </div>
+     orts section -->
+     <div class=card>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center text-white bg-dark"> Sports Highlights</h3>
+                <ul>
+                    {{macro.displaynewsList(sports)}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- health section -->
+        <div class=card>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center text-white bg-dark"> Health</h3>
+                    <ul>
+                        {{macro.displaynewsList(health)}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- lifestyle section -->
+        <div class=card>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3> lifestyle</h3>
+                    <ul>
+                        {{macro.displaynewsList(lifestyle)}}
+                    </ul>
+            
+                </div>
+            </div>
+        </div>
+      
+        <!-- breaking news section -->
+        <div class=card>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center text-white bg-dark"> Breaking News</h3>
+                    <ul>
+                        {{macro.displaynewsList(breaking)}}
+                    </ul>
+             
+                </div>
+            </div>
+        </div>
+   
+
+    </div>
+
+    {% endblock %}

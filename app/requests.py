@@ -42,6 +42,7 @@ def process_results(news_list):
     '''
     news_results = []
     for news_article in news_list:
+        id = news_article.get('id')
         source = news_article.get('source.name')
         title = news_article.get('title')
         description = news_article.get('description')
@@ -50,7 +51,27 @@ def process_results(news_list):
         publishedAt = news_article.get('publishedAt')
 
         if urlToImage:
-            news_object = News(source,title,description,url,urlToImage,publishedAt)
+            news_object = News(id,source,title,description,url,urlToImage,publishedAt)
             news_results.append(news_object)
 
     return news_results
+
+
+def get_article(id):
+    get_article_details_url = base_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_article_details_url) as url:
+        article_details_data = url.read()
+        article_details_response = json.loads(article_details_data)
+
+        article_object = None
+        if article_details_response:
+            id = article_details_response.get('id')
+            source =  article_details_response.get('source.name')
+            title1 =  article_details_response.get('title')
+            description =  article_details_response.get('description')
+            url =  article_details_response.get('url')
+            urlToImage =  article_details_response.get('urlToImage')
+            publishedAt =  article_details_response.get('publishedAt')
+            article_object = News(id,source,title,description,url,urlToImage,publishedAt)
+    return article_object
