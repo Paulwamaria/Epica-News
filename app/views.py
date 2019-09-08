@@ -1,6 +1,7 @@
 from flask import render_template
 from app import app
-from .requests import get_news,get_article
+from .requests import get_news,get_article,search_news
+from flask import render_template,request,redirect,url_for
 
 
 @app.route('/')
@@ -16,16 +17,22 @@ def index():
     entertainment_highlights = get_news('entertainment')
     business_news = get_news('business')
     tech_news = get_news('technology')
-    # sports_news = get_news('sports')
-    # health_news = get_news('health')
-    # life_style =get_news('lifestyle')
-    # breaking_news = get_news('breaking')
+    sports_news = get_news('sports')
+    health_news = get_news('health')
+    life_style =get_news('lifestyle')
+    breaking_news = get_news('breaking')
 
     # print(news_highlights)
+
    
+    search_news = request.args.get('news_query')
+
+    if search_news:
+        return redirect(url_for('search',news_name=search_news))
+    else:
 
 
-    return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,
+        return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,
     business = business_news,technology =tech_news,sports = sports_news,health = health_news,
     lifestyle = life_style,breaking=breaking_news)
 
@@ -39,3 +46,16 @@ def article(id):
     title = f'{article.title}'
 
     return render_template('article.html',title = title,article = article)
+
+
+@app.route('/search/<news_name>')
+def search(news_name):
+    '''
+    View function to display the search results
+    '''
+    news_name_list =news_name.split(" ")
+    news_name_format = "+".join(news_name_list)
+    searched_news = search_news(news_name_format)
+    title = f'search results for {news_name}'
+
+    return render_template('search.html',movies = searched_news)

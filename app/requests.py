@@ -42,8 +42,8 @@ def process_results(news_list):
     '''
     news_results = []
     for news_article in news_list:
-        id = news_article.get('id')
-        source = news_article.get('source.name')
+        id = news_article.get("source id")
+        source = news_article.get('source name')
         title = news_article.get('title')
         description = news_article.get('description')
         url = news_article.get('url')
@@ -66,7 +66,7 @@ def get_article(id):
 
         article_object = None
         if article_details_response:
-            id = article_details_response.get('id')
+            id = article_details_response.get('source id')
             source =  article_details_response.get('source.name')
             title1 =  article_details_response.get('title')
             description =  article_details_response.get('description')
@@ -75,3 +75,18 @@ def get_article(id):
             publishedAt =  article_details_response.get('publishedAt')
             article_object = News(id,source,title,description,url,urlToImage,publishedAt)
     return article_object
+
+def search_news(news_name):
+    search_news_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,news_name)
+    with urllib.request.urlopen(search_news_url) as url:
+        search_news_data = url.read()
+        search_news_response = json.loads(search_news_data)
+
+        search_news_results = None
+
+        if search_news_response['results']:
+            search_news_list = search_news_response['results']
+            search_news_results = process_results(search_news_list)
+
+
+    return search_news_results
