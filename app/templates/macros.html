@@ -9,19 +9,62 @@
 {% macro displaynewsList(news_list) %}
 
 {% for news in news_list %}
-<div class = "mb-20">
-<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 card mt-sm-1 mb-sm-5">
-    <img src="{{ news.urlToImage}}" alt="{{ news.title }} poster" class="img-responsive">
-    <li class="text-center ">
-        <a href="{{news.url}}">
-            {{ news.title  }}</a>
+<div>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 card mt-sm-1 mb-sm-5">
+        <div class="panel panel-primary panel-default" style="max-height: 8;">
+            <div class="panel-header">
+                <li class="text-center ">
+                    <a href="{{news.url}}">
+                        {{ news.title  }}</a>
 
-    </li>
-    published on {{news.publishedAt }}
+                </li>
+            </div>
+            <img src="{{ news.urlToImage}}" alt="{{ news.title }} poster" class="img-responsive">
+            <div class="panel-footer panel-primary">
+                published on {{news.publishedAt }}
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+{% endfor %}
+
+{% endmacro %}
+
+<!-- source  macro -->
+
+{% macro displaySourceList(source_list) %}
+
+{% for source_row in source_list |batch(4)%}
+<div class="row">
+
+
+    {% for sources in source_row %}
+    <div class="col-md-3">
+
+        <div class="panel panel-default ">
+            <div class="panel-heading ">
+                <h2>
+                  <a href="{{sources.url}}" > {{ sources.name}}</a>
+                </h2>
+            </div>
+            <div class="panel-body panel-info">
+                <p>
+                    {{ sources.description |truncate(150)}}
+
+                </p>
+                <a href="#arts" class="btn btn-info btn-sm ">view news on {{sources.name}}</a>
+                
+            </div>
+
+
+        </div>
+    </div>
+    {% endfor %}
+
 </div>
-
-
 {% endfor %}
 
 {% endmacro %}

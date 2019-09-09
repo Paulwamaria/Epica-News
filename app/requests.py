@@ -3,12 +3,14 @@ import urllib.request,json
 from .models import news
 
 News = news.News
+Source = news.Source
 
 #create an  API request
 api_key = app.config['NEWS_API_KEY']
 
 # Getting the news base url
 base_url = app.config["ARTICLES_API_BASE_URL"]
+source_url = app.config['NEWS_SOURCES_BASE_URL']
 
 def get_news(everything):
     '''
@@ -55,6 +57,40 @@ def process_results(news_list):
             news_results.append(news_object)
 
     return news_results
+
+def get_sources():
+    '''
+    Function that gets the json response to our url request
+    '''Usage history
+
+    get_sources_url = source_url.format(api_key)
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
+        sources_results = None
+        if get_sources_response['sources']:
+            sources_results_list = get_sources_response['sources']
+            sources_results = process_sources(sources_results_list)
+    return sources_results
+def process_sources(sources_list):
+    '''
+    Function that processes the news sources results and turns them into a list of objects
+    Args:
+        sources_list: A list of dictionaries that contain sources details
+    Returns:
+        sources_results: A list of sources objects
+    '''
+    sources_results = []
+    for source_item in sources_list:
+        id = source_item.get('id')
+        name = source_item.get('name')
+        description = source_item.get('description')
+        url = source_item.get('url')
+        language = source_item.get('language')
+        country = source_item.get('country')
+        sources_object = Source(id,name,description,url,country,language)
+        sources_results.append(sources_object)
+    return sources_results
 
 
 def get_article(id):

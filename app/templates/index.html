@@ -14,37 +14,55 @@
 
 <div class="container-fluid text-center">
 
-        
 
-        <div class="container">
-            <form>
-                <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
-                <input type="submit"  value="Submit" class="btn btn-default">
-            </form>
-        
-        </div>
+
+
 
     <h1 class="text-center text-white bg-dark">{{ text }} </h1>
 
-    <!-- News highlight section  -->
+
+    <div class="container">
+        <form>
+            <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
+            <input type="submit" value="Submit" class="btn btn-default">
+        </form>
+
+    </div>
+
     <div class=card>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center text-white bg-dark"> News Sources</h2>
+
+                    <ul>
+                        <span id='souc'>{{ macro.displaySourceList(sources) }}</span>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- News highlight section  -->
+    <div class="card" id ="arts">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center text-white bg-dark"> Entertainment</h3>
+                <h2 class="text-center text-white bg-dark"> Entertainment</h2>
 
                 <ul>
                     {{macro.displaynewsList(entertainment)}}
                 </ul>
-            
+
             </div>
         </div>
     </div>
- 
+
+
     <!-- business news section -->
     <div class=card>
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center text-white bg-dark"> Business News</h3>
+                <h2 class="text-center text-white bg-dark"> Business News</h2>
 
                 <div>
                     <ul>
@@ -60,68 +78,69 @@
         <div class=card>
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-center text-white bg-dark"> Technology News</h3>
+                    <h2 class="text-center text-white bg-dark"> Technology News</h2>
                     <ul>
                         {{macro.displaynewsList(technology)}}
                     </ul>
-            
+
                     <!-- sp
                 </div>
             </div>
         </div>
      orts section -->
-     <div class=card>
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-center text-white bg-dark"> Sports Highlights</h3>
-                <ul>
-                    {{macro.displaynewsList(sports)}}
-                </ul>
-            </div>
-        </div>
-    </div>
+                    <div class=card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="text-center text-white bg-dark"> Sports Highlights</h2>
+                                <ul>
+                                    {{macro.displaynewsList(sports)}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <!-- health section -->
-        <div class=card>
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text-center text-white bg-dark"> Health</h3>
-                    <ul>
-                        {{macro.displaynewsList(health)}}
-                    </ul>
+                    <!-- health section -->
+                    <div class=card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="text-center text-white bg-dark"> Health</h2>
+                                <ul>
+                                    {{macro.displaynewsList(health)}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- lifestyle section -->
+                    <div class=card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2> lifestyle</h2>
+                                <ul>
+                                    {{macro.displaynewsList(lifestyle)}}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- breaking news section -->
+                    <div class=card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="text-center text-white bg-dark"> Breaking News</h2>
+                                <ul>
+                                    {{macro.displaynewsList(breaking)}}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-            </div>
-        </div>
 
 
-        <!-- lifestyle section -->
-        <div class=card>
-            <div class="row">
-                <div class="col-md-12">
-                    <h3> lifestyle</h3>
-                    <ul>
-                        {{macro.displaynewsList(lifestyle)}}
-                    </ul>
-            
-                </div>
-            </div>
-        </div>
-      
-        <!-- breaking news section -->
-        <div class=card>
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text-center text-white bg-dark"> Breaking News</h3>
-                    <ul>
-                        {{macro.displaynewsList(breaking)}}
-                    </ul>
-             
-                </div>
-            </div>
-        </div>
-   
-
-    </div>
-
-    {% endblock %}
+                {% endblock %}

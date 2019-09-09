@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .requests import get_news,get_article,search_news
+from .requests import get_news,get_article,search_news,get_sources
 from flask import render_template,request,redirect,url_for
 
 
@@ -21,6 +21,7 @@ def index():
     health_news = get_news('health')
     life_style =get_news('lifestyle')
     breaking_news = get_news('breaking')
+    news_sources = get_sources()
 
     # print(news_highlights)
 
@@ -34,7 +35,10 @@ def index():
 
         return render_template('index.html',text=message, title = title, entertainment = entertainment_highlights,
     business = business_news,technology =tech_news,sports = sports_news,health = health_news,
-    lifestyle = life_style,breaking=breaking_news)
+    lifestyle = life_style,breaking=breaking_news,sources=news_sources)
+
+
+
 
 @app.route('/article/id')
 def article(id):
@@ -58,4 +62,4 @@ def search(news_name):
     searched_news = search_news(news_name_format)
     title = f'search results for {news_name}'
 
-    return render_template('search.html',movies = searched_news)
+    return render_template('search.html',news = searched_news)
