@@ -1,16 +1,21 @@
-from app import app
+
 import urllib.request,json
-from .models import news
+from .models import News,Source
 
-News = news.News
-Source = news.Source
 
-#create an  API request
-api_key = app.config['NEWS_API_KEY']
-
+# Getting api key
+api_key = None
 # Getting the news base url
-base_url = app.config["ARTICLES_API_BASE_URL"]
-source_url = app.config['NEWS_SOURCES_BASE_URL']
+base_url = None
+#Getting the Sources base url
+source_url = None
+
+
+def configure_request(app):
+    global api_key,base_url,source_url
+    api_key = app.config['NEWS_API_KEY']
+    base_url = app.config['ARTICLES_API_BASE_URL']
+    source_url = app.config['NEWS_SOURCES_BASE_URL']
 
 def get_news(everything):
     '''
@@ -61,7 +66,7 @@ def process_results(news_list):
 def get_sources():
     '''
     Function that gets the json response to our url request
-    '''Usage history
+    '''
 
     get_sources_url = source_url.format(api_key)
     with urllib.request.urlopen(get_sources_url) as url:
@@ -113,7 +118,7 @@ def get_article(id):
     return article_object
 
 def search_news(news_name):
-    search_news_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,news_name)
+    search_news_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(api_key,news_name)
     with urllib.request.urlopen(search_news_url) as url:
         search_news_data = url.read()
         search_news_response = json.loads(search_news_data)

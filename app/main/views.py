@@ -1,10 +1,9 @@
-from flask import render_template
-from app import app
-from .requests import get_news,get_article,search_news,get_sources
+
+from . import main
+from ..requests import get_news,get_article,search_news,get_sources
 from flask import render_template,request,redirect,url_for
 
-
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -29,7 +28,7 @@ def index():
     search_news = request.args.get('news_query')
 
     if search_news:
-        return redirect(url_for('search',news_name=search_news))
+        return redirect(url_for('search',news_name = search_news))
     else:
 
 
@@ -40,7 +39,7 @@ def index():
 
 
 
-@app.route('/article/id')
+@main.route('/article/id')
 def article(id):
 
     '''
@@ -52,7 +51,7 @@ def article(id):
     return render_template('article.html',title = title,article = article)
 
 
-@app.route('/search/<news_name>')
+@main.route('/search/<news_name>')
 def search(news_name):
     '''
     View function to display the search results

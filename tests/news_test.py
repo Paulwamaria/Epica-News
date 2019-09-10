@@ -1,7 +1,5 @@
 import unittest
-from models import news
-News = news.News
-Source = news.Source
+from app.models import News, Source
 
 class NewsTest(unittest.TestCase):
     '''
@@ -38,5 +36,4 @@ class SourceTest(unittest.TestCase):
 
 
 
-if __name__ == '__main__':
-    unittest.main()
+

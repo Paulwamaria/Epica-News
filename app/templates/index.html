@@ -5,7 +5,7 @@
 {{ super() }}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Squada+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 <!-- Content block -->
@@ -18,13 +18,13 @@
 
 
 
-    <h1 class="text-center text-white bg-dark">{{ text }} </h1>
+    <h1 class="text-center text-white bg-dark" style = "font-family: 'Bungee Inline', cursive;, color:blue">{{ text }} </h1>
 
 
     <div class="container">
         <form>
-            <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
-            <input type="submit" value="Submit" class="btn btn-default">
+            <input type="text" name="news_query" placeholder="Search for News" class="form-control">
+            <input type="submit" value="Search" class="btn btn-default" styles = "margin-top:5px;">
         </form>
 
     </div>

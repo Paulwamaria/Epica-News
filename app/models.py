@@ -26,4 +26,3 @@ class Source:
         self.language = language
         self.country = country
 
-        
