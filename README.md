@@ -2,7 +2,7 @@
 
 ## Description
 
-Epica News is a web application that allows people to keep up with the current affairs no matter how busy they are. This is made possible through the integration of a news API that allows access to the current news. The application allows the user to select the type of news they are interested in.
+Epica News is a web application that allows people to keep up with the current affairs no matter how busy they are. This is made possible through the integration of a news API that allows access to the current news. The application allows the user to select the type of news they are interested in as well as the news sources.
 
 ## Developer
 
